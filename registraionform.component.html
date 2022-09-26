@@ -1,0 +1,112 @@
+<section class="vh-100 bg-image">
+  <div *ngIf="hidebutton" class="alert alert-success text-right" role="alert">
+    <strong>{{message}}</strong>
+  </div>
+  <div class="container py-5 h-80">
+    <div class="container h-160">
+      <div class="row d-flex justify-content-center align-items-center h-100 ">
+        <div class="col-12 col-md-9 col-lg-7 col-xl-6 ">
+          <div class="card gradient-custom-2" style="border-radius: 15px;">
+            <div class="card-body p-5 ">
+              <h2 class="text-uppercase text-center mb-5 navbar-brand">Create an account</h2>
+              <form [formGroup]="form" (ngSubmit)="registration()">
+
+                <div class="form-group row  ">
+                  <!-- <label for="username" class="col-lg-2 col-form-label createbook ">UserName</label> -->
+                  <div class="col-sm-12">
+                    <input type="text" formControlName="username" class="form-control"
+                      [ngClass]="{ 'is-invalid': submitted && f ['username'].errors }" id="username"
+                      placeholder="User Name">
+                    <!-- <div *ngIf="submitted && f ['username'].errors" class="invalid-feedback">
+                    <div *ngIf="f ['username'].errors ['required']">username is required</div>
+                      
+                  </div> -->
+                    <p class="alert alert-danger bg-transparent border-0"
+                      *ngIf="form.controls['username'].hasError('minlength')&& form.controls['username'].touched">
+                      Your username must be at least 3 characters long.
+                    </p>
+                    <p class="alert alert-danger bg-transparent border-0"
+                      *ngIf="form.controls['username'].hasError('maxlength') && form.controls['username'].touched">
+                      Your username cannot exceed 20 characters.
+                    </p>
+                    <p class="alert alert-danger bg-transparent border-0"
+                      *ngIf="form.controls['username'].hasError('required') && form.controls['username'].dirty && form.controls['username'].touched">
+                      username is required
+                    </p>
+                    <p class="alert alert-danger bg-transparent border-0"
+                    *ngIf="form.controls['username'].invalid && form.controls['username'].touched">
+                    username is required
+                  </p>
+                  </div>
+                </div>
+                <div class="form-group row  ">
+                  <!-- <label for="username" class="col-lg-2 col-form-label createbook ">UserName</label> -->
+                  <div class="col-sm-12">
+                    <input type="email" formControlName="email" class="form-control"
+                      [ngClass]="{ 'is-invalid': submitted && f ['email'].errors }" id="email" placeholder="Email">
+                    <!-- <div *ngIf="submitted && f ['email'].errors " class="invalid-feedback">  
+                  <div *ngIf="f ['email'].errors ['required']">Email is required</div>
+
+                </div> -->
+                    <p class="alert alert-danger bg-transparent border-0"
+                      *ngIf="form.controls['email'].hasError('required') && form.controls['email'].dirty && form.controls['email'].touched">
+                      Email is required
+                    </p>
+                    <p class="alert alert-danger bg-transparent border-0"
+                    *ngIf="form.controls['email'].invalid && form.controls['email'].touched">
+                    Email is required
+                  </p>
+                  </div>    
+                </div>
+                <div class="form-group row  ">
+                  <!-- <label for="password" class="col-lg-2 col-form-label createbook ">Password</label> -->
+                  <div class="col-sm-12">
+                    <input type="text" formControlName="password" class="form-control"
+                      [ngClass]="{ 'is-invalid': submitted && f ['password'].errors }" id="password"
+                      placeholder="Password">
+                    <div *ngIf="submitted && f ['password'].errors" class="invalid-feedback">
+                      <div *ngIf="f ['password'].errors ['required']">password is required</div>
+
+                    </div>
+                    <p class="alert alert-danger bg-transparent border-0"
+                    *ngIf="form.controls['password'].hasError('pattern') && form.controls['password'].dirty && form.controls['password'].touched">
+                    Must contain at least 1 in Capital Case, 1 in Small case and 1 Special character
+                  </p>
+                  <p class="alert alert-danger bg-transparent border-0"
+                  *ngIf="form.controls['password'].invalid && form.controls['password'].touched">
+                  Password is required
+                </p>
+                  </div>
+                </div>
+
+                <div class="form-group row  ">
+                  <!-- <label for="password" class="col-lg-2 col-form-label createbook ">Password</label> -->
+                  <div class="col-sm-12">
+                    <select formControlName="role" class="form-control"
+                      [ngClass]="{ 'is-invalid': submitted && f ['role'].errors }">
+                      <option Selected disabled>Select Role</option>
+                      <option value="AUTHOR">Author</option>
+                      <option value="READER">Reader</option>
+                    </select>
+                    <div *ngIf="submitted && f ['role'].errors" class="invalid-feedback">
+                      <div *ngIf="f ['role'].errors ['required']">role is required</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="text-center pt-1 mb-5 pb-1">
+                  <button class="btn btn-primary btn-block fa-lg  mb-3" [disabled]="form.invalid">registration</button>
+                </div>
+
+                <div class="text-right">
+                  <a href="#" routerLink="/loginform" class="add-project" data-toggle="modal"
+                    data-target="#add_project">Go Back</a>
+                </div>
+              </form>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

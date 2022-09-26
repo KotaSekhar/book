@@ -1,0 +1,43 @@
+<div class="container-fluid display-table">
+    <div class="row display-table-row">
+        <div class="col-2 hidden-xs display-table-cell v-align box" id="navigation">
+            <div class="logo">
+                <a hef="home.html"><img src="https://media.istockphoto.com/photos/online-education-or-elearning-concept-picture-id1133774648?b=1&k=20&m=1133774648&s=170667a&w=0&h=bp24m6Xyjq8B-Co_vyVH6wXbaJQnzdtkoa5aHR08bRI=" alt="merkery_logo" class="hidden-xs hidden-sm">
+                    
+                </a>
+            </div>
+            <div class="navi">
+                <ul *ngIf="roles=='ROLE_READER'">
+                    <li class="active"><a routerLink="/dashboard/readerform"><i class="fa fa-home" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Get MyBook</span></a></li>
+                    <li><a routerLink="/dashboard/searchbookform"><i class="fa fa-tasks" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Search Book</span></a></li>
+                    <li><a routerLink="/dashboard/buyabookform"><i class="fa fa-tasks" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Buy Book</span></a></li>
+               
+                </ul>
+
+                <ul *ngIf="roles=='ROLE_AUTHOR'">
+                    <li><a routerLink="/dashboard/createbook"><i class="fa fa-tasks" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Create Author</span></a></li>
+ 
+                </ul>
+            </div>
+        </div>
+        <div class="col-8 display-table-cell v-align">
+            <!--<button type="button" class="slide-toggle">Slide Toggle</button> -->
+            <div class="row navbar" >
+                <header>
+                    <div class="col-12 text-right">
+                        <div class="header-rightside">
+                            <ul class="list-inline header-top pull-right">
+                                <li class="hidden-xs"><a href="#" routerLink="/loginform" class="add-project" data-toggle="modal" data-target="#add_project">Logout</a></li>
+                                <li><a href="#"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>  
+                            </ul>
+                        </div>
+                    </div>
+                </header>
+            </div>
+            <div class="user-dashboard">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </div>
+
+</div>

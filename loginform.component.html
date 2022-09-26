@@ -1,0 +1,91 @@
+<section class="h-100 gradient-form" style="background-color: #fff;">
+  <div class="container py-5 h-80">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-xl-10">
+        <div class="card rounded-3 text-black">
+          <div class="row g-0">
+            <div class="col-lg-6">
+              <div class="card-body p-md-5 mx-md-4">
+
+                <div class="text-center">
+                  <img src="../../assets/images/book.jpg"
+                    style="width: 185px;" alt="logo">
+                  <h4 class="mt-1 mb-5 pb-1 heading" > Digital Book </h4>
+                </div>
+
+ <!-- <div class="container">
+  <div class="row mt-2 border border-dark">
+    <div class="col-12"> -->
+<form  [formGroup]="form" (ngSubmit)="login()">
+
+  <div >
+    <p>Please login to your account</p>
+      </div>
+    
+  <div class="form-group row">
+    <!-- <label for="username" class="col-lg-2 col-form-label createbook ">UserName</label> -->
+    <div class="col-sm-12">
+    <input type="text" formControlName="username" class="form-control"
+    [ngClass]="{ 'is-invalid': submitted && f ['username'].errors }" id="username"  placeholder="User Name">
+    <div *ngIf="submitted && f ['username'].errors" class="invalid-feedback">
+      <div *ngIf="f ['username'].errors ['required']">username is required</div>
+      
+    </div>
+    <p class="alert alert-danger bg-transparent border-0"
+    *ngIf="form.controls['username'].invalid && form.controls['username'].touched">
+    UserName is required
+  </p>
+  </div>
+</div>
+
+ <div class="form-group row  ">
+  <!-- <label for="password" class="col-lg-2 col-form-label createbook ">Password</label> -->
+  <div class="col-sm-12">
+  <input type="text" formControlName="password"
+  class="form-control"
+  [ngClass]="{ 'is-invalid': submitted && f ['password'].errors }" id="password"  placeholder="Password">
+  <div *ngIf="submitted && f ['password'].errors" class="invalid-feedback">
+    <div *ngIf="f ['password'].errors ['required']">password is required</div>
+  </div>
+  <p class="alert alert-danger bg-transparent border-0"
+  *ngIf="form.controls['password'].hasError('pattern') && form.controls['password'].dirty && form.controls['password'].touched">
+  Must contain at least 1 in Capital Case, 1 in Small case and 1 Special character
+</p>
+  <p class="alert alert-danger bg-transparent border-0"
+  *ngIf="form.controls['password'].invalid && form.controls['password'].touched">
+  password is required
+</p>
+</div>
+</div>
+
+  <div class="text-center pt-1 mb-5 pb-1" >
+  <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" [disabled]="form.invalid" >login</button>
+</div>
+
+
+</form>
+         <div class="text-right">    
+<a href="#" routerLink="/registrationform" class="add-project" data-toggle="modal" data-target="#add_project">Register</a>
+</div>
+
+
+
+<!-- </div>
+</div>
+</div> -->
+
+</div>
+</div>
+<div class="col-lg-6 d-flex align-items-center gradient-custom-2">
+  <div class="text-white px-3 py-4 p-md-5 mx-md-4">
+    <h4 class="mb-4">Books should be cost less and They should be digital</h4>
+    <p class="small mb-0">An ebook (short for electronic book), also known as an e-book or eBook, is a book publication made available in digital form, consisting of text, images, or both, readable on the flat-panel display of computers or other electronic devices.</p>
+  </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+

@@ -1,0 +1,66 @@
+
+<form [formGroup]="form">
+ <div class="form-row">
+  <div class="col">
+    <input formControlName="category" type="search"  class="form-control rounded" placeholder="Category Search" aria-label="Search" aria-describedby="search-addon" />
+  
+  </div>
+  <div class="col">
+    <input type="search" formControlName="price"  class="form-control rounded" placeholder="Price Search" aria-label="Search" aria-describedby="search-addon" />
+   
+  </div>
+  <div class="col">
+    <input type="search" formControlName="author"  class="form-control rounded" placeholder="Author Search" aria-label="Search" aria-describedby="search-addon" />
+
+  </div>
+  <div class="col">
+    <input type="search" formControlName="publisher"  class="form-control rounded" placeholder="Publidher Search" aria-label="Search" aria-describedby="search-addon" />
+    
+  </div>
+ 
+<button (click)='getBooks()' class="btn btn-primary"> search</button>
+
+</div>
+
+
+</form>
+
+<div class="row mt-2 border border-dark">
+<table class="table table-bordered">
+  <thead class="thead-dark">
+    <tr>
+      <th>bookId</th>
+    <th>Title</th>
+    <th>Author</th>
+    <th>Category</th>
+    <th>Publisher</th>
+    <th>Price</th>
+    <th>Content</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor='let book of books'>
+      <td>{{book.bookId}}</td>
+      <td>{{book.title}}</td>
+      <td>{{book.author}}</td>
+      <td>{{book.category}}</td>
+      <td>{{book.publisher}}</td>
+      <td>{{book.price}}</td>
+      <td>{{book.content}}</td>
+     
+  
+    </tr>
+   
+  </tbody>
+</table>
+</div>
+
+
+
+
+
+
+
+
+

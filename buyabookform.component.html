@@ -1,0 +1,88 @@
+<div *ngIf="hidebutton" class="alert alert-success text-right" role="alert">
+    <strong>{{message}}</strong>
+  </div>
+   <div class="container">
+    <div class="row mt-2 border border-dark">
+      <div class="col-12">
+        <form  [formGroup]="form" (ngSubmit)="save()">
+
+            <div >
+                  <h4 class="text-center p-3">Buy Book</h4>
+                </div>
+              
+
+                <div class="form-group row">
+                    <label for="bookId" class="col-lg-2 col-form-label createbook ">BookId</label>
+                    <div class="col-sm-8">
+                    <input type="number" formControlName="bookId" [ngClass]="{ 'is-invalid': submitted && f ['bookId'].errors }" class="form-control" id="bookId"  placeholder="Enter BookId" >
+                    <div *ngIf="submitted && f ['bookId'].errors" class="invalid-feedback">
+                      <div *ngIf="f ['bookId'].errors ['required']">BookId is required</div>
+                    </div>
+                    <p class="alert alert-danger bg-transparent border-0"
+                    *ngIf="form.controls['bookId'].touched && form.controls['bookId'].hasError('required')">
+                    BookId is required 
+                  </p>
+                  </div>
+                  </div>
+
+            <div class="form-group row mt-2 ">
+              <label for="readerName" class="col-lg-2 col-form-label createbook ">Name</label>
+              <div class="col-sm-8">
+              <input type="text" formControlName="readerName"
+              class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f ['readerName'].errors }" id="readerName"  placeholder="Enter Name">
+              <div *ngIf="submitted && f ['readerName'].errors" class="invalid-feedback">
+                <div *ngIf="f ['readerName'].errors ['required']">Name is required</div>
+                <div *ngIf="f ['readerName'].errors['pattern']">Please enter valid Name 
+                </div>
+                <div *ngIf="f ['readerName'].errors['minlength']">Name should at least 3characters 
+                </div>
+                <div *ngIf="f ['readerName'].errors['maxlength']">Name should be max 25characters 
+                </div>
+              </div>
+              <p class="alert alert-danger bg-transparent border-0"
+              *ngIf="form.controls['readerName'].hasError('maxlength') && form.controls['readerName'].dirty && form.controls['readerName'].touched">
+              Name should be max 25characters 
+            </p>
+            <p class="alert alert-danger bg-transparent border-0"
+            *ngIf="form.controls['readerName'].hasError('minlength') && form.controls['readerName'].dirty && form.controls['readerName'].touched">
+            Name should be min 3 characters 
+          </p>
+          <p class="alert alert-danger bg-transparent border-0"
+          *ngIf="form.controls['readerName'].touched && form.controls['readerName'].hasError('required')">
+          Name is required 
+          </p>
+            </div>
+          </div>
+         
+           
+          
+            <div class="form-group row">
+              <label for="readerEmailId" class="col-lg-2 col-form-label createbook ">Email</label>
+              <div class="col-sm-8">
+              <input type="email" formControlName="readerEmailId" [ngClass]="{ 'is-invalid': submitted && f ['readerEmailId'].errors }" class="form-control " id="readerEmailId"  placeholder="Enter Email">
+              <div *ngIf="submitted && f ['readerEmailId'].errors" class="invalid-feedback">
+                <div *ngIf="f ['readerEmailId'].errors ['required']">Email is required</div>
+              </div>
+              <p class="alert alert-danger bg-transparent border-0"
+              *ngIf="form.controls['readerEmailId'].hasError('pattern') && form.controls['readerEmailId'].dirty && form.controls['readerEmailId'].touched">
+              Email name contains only Alphabets
+            </p>
+            <p class="alert alert-danger bg-transparent border-0"
+            *ngIf="form.controls['readerEmailId'].touched && form.controls['readerEmailId'].hasError('required')">
+            Email is required 
+          </p>
+            </div>
+            </div>
+          
+            <div style="text-align: right;" class="mt-2">
+            <button  class="btn btn-primary" [disabled]="form.invalid">Buy</button>
+          </div>
+          
+          
+          </form>
+  
+  
+  </div>
+  </div>
+  </div>

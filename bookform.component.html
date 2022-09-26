@@ -1,0 +1,165 @@
+<div *ngIf="hidebutton" class="alert alert-success text-right" role="alert">
+  <strong>{{message}}</strong>
+</div>
+ <div class="container">
+  <div class="row mt-2 border border-dark">
+    <div class="col-12">
+<form  [formGroup]="form" (ngSubmit)="save()">
+
+  <div >
+        <h4 class="text-center p-3">Create Books</h4>
+      </div>
+    
+  <div class="form-group row mt-2 ">
+    <label for="title" class="col-lg-2 col-form-label createbook ">Title</label>
+    <div class="col-sm-8">
+    <input type="text" formControlName="title"
+    class="form-control"
+    [ngClass]="{ 'is-invalid': submitted && f ['title'].errors }" id="title"  placeholder="Enter Book Title">
+    <div *ngIf="submitted && f ['title'].errors" class="invalid-feedback">
+      <div *ngIf="f ['title'].errors ['required']">Book Title is required</div>
+      <div *ngIf="f ['title'].errors['pattern']">Please enter valid title 
+      </div>
+      <div *ngIf="f ['title'].errors['minlength']">Title should at least 3characters 
+      </div>
+      <div *ngIf="f ['title'].errors['maxlength']">Title should be max 25characters 
+      </div>
+    </div>
+    <p class="alert alert-danger bg-transparent border-0"
+    *ngIf="form.controls['title'].hasError('maxlength') && form.controls['title'].dirty && form.controls['title'].touched">
+    Title should be max 25characters 
+  </p>
+  <p class="alert alert-danger bg-transparent border-0"
+  *ngIf="form.controls['title'].hasError('minlength') && form.controls['title'].dirty && form.controls['title'].touched">
+  Title should be min 3 characters 
+</p>
+<p class="alert alert-danger bg-transparent border-0"
+*ngIf="form.controls['title'].touched && form.controls['title'].hasError('required')">
+Title is required 
+</p>
+  </div>
+</div>
+<!-- <div class="input-group row">
+  <label for="category" class="col-lg-2 col-form-label createbook ">Category</label>
+  <div class="col-sm-8">
+  <input type="text" class="form-control" aria-label="Text input with dropdown button">
+  <div class="input-group-append">
+    <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</button>
+    <select class="custom-select" id="category">
+      <option selected>Choose...</option>
+      <option value="1">One</option>
+      <option value="2">Two</option>
+      <option value="3">Three</option>
+    </select>
+  </div>
+</div>
+</div> -->
+  <div class="form-group row">
+    <label for="price" class="col-lg-2 col-form-label createbook ">Price</label>
+    <div class="col-sm-8">
+    <input type="number" formControlName="price" [ngClass]="{ 'is-invalid': submitted && f ['price'].errors }" class="form-control" id="price"  placeholder="Enter price" >
+    <div *ngIf="submitted && f ['price'].errors" class="invalid-feedback">
+      <div *ngIf="f ['price'].errors ['required']">Book Price is required</div>
+    </div>
+    <p class="alert alert-danger bg-transparent border-0"
+    *ngIf="form.controls['price'].touched && form.controls['price'].hasError('required')">
+    Price is required 
+  </p> 
+  <!-- <div *ngIf="submitted && f ['title'].errors" class="invalid-feedback">
+  <div *ngIf="f ['price'].errors['min']">Title should at least 3characters 
+  </div></div> -->
+  <!-- <p class="alert alert-danger bg-transparent border-0"
+  *ngIf="form.controls['price'].touched && form.controls['price'].hasError('min')">
+  price should be minimum 100 
+</p> -->
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="publisher" class="col-lg-2 col-form-label createbook ">Publisher</label>
+    <div class="col-sm-8">
+    <input type="text" formControlName="publisher" [ngClass]="{ 'is-invalid': submitted && f ['publisher'].errors }" class="form-control " id="publisher"  placeholder="Enter publisher name">
+    <div *ngIf="submitted && f ['publisher'].errors" class="invalid-feedback">
+      <div *ngIf="f ['publisher'].errors ['required']">Book Publisher Name is required</div>
+    </div>
+    <p class="alert alert-danger bg-transparent border-0"
+    *ngIf="form.controls['publisher'].hasError('pattern') && form.controls['publisher'].dirty && form.controls['publisher'].touched">
+    Publisher name contains only Alphabets
+  </p>
+  <p class="alert alert-danger bg-transparent border-0"
+  *ngIf="form.controls['publisher'].touched && form.controls['publisher'].hasError('required')">
+  Publisher is required 
+</p>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="publishedDate" class="col-lg-2 col-form-label createbook ">Published Date</label>
+    <div class="col-sm-8">
+    <input type="datetime-local"  formControlName="publishedDate" [ngClass]="{ 'is-invalid': submitted && f ['publishedDate'].errors }" class="form-control " id="publishedDate"  placeholder="Enter date">
+    <div *ngIf="submitted && f ['publishedDate'].errors" class="invalid-feedback">
+      <div *ngIf="f ['publishedDate'].errors ['required']">Book Published Date is required</div>
+    </div>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="logo"  class="col-lg-2 col-form-label createbook ">Image</label>
+    <div class="col-sm-8">
+    <input type="file"  id="logo" formControlName="logo" [ngClass]="{ 'is-invalid': submitted && f ['logo'].errors }" >
+    <div *ngIf="submitted && f ['logo'].errors" class="invalid-feedback">
+      <div *ngIf="f ['logo'].errors ['required']">Book Image is required</div>
+    </div>
+  </div>
+  </div>
+
+
+  <div class="form-group  row mb-3">
+    <label for="active" class="col-lg-2 col-form-label createbook ">Status</label>
+    <div class="col-sm-8">
+      <select class="form-control" id="active" formControlName="active">
+        <option value="ACTIVE">Active</option>
+        <option value="BLOCK">Block</option>
+        <option value="UNBLOCK">Unblock</option>
+      </select> 
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="content" class="col-lg-2 col-form-label createbook ">Content</label>
+    <div class="col-sm-8">
+    <input type="text" formControlName="content" [ngClass]="{ 'is-invalid': submitted && f ['content'].errors }" class="form-control" id="content"  placeholder="Enter content">
+    <div *ngIf="submitted && f ['content'].errors" class="invalid-feedback">
+      <div *ngIf="f ['content'].errors ['required']">Book Content is required</div>
+    </div>
+    <p class="alert alert-danger bg-transparent border-0"
+    *ngIf="form.controls['content'].touched && form.controls['content'].hasError('required')">
+    Content is required 
+  </p>
+  </div>
+  </div>
+
+  <div class="form-group  row mb-3">
+    <label for="category" class="col-lg-2 col-form-label createbook ">Category</label>
+    <div class="col-sm-8">
+      <!-- <input type="text"   class="form-control" id="category"/> -->
+      <select class="form-control" id="category" formControlName="category">
+        <option selected>Choose Category...</option>
+        <option value="COMIC">COMIC</option>
+        <option value="ACTION">ACTION</option>
+        <option value="POETRY">POETRY</option>
+        <option value="COMEDY">COMEDY</option>
+      </select> 
+  </div>
+  </div>
+  <div style="text-align: right;" class="mt-2">
+  <button  class="btn btn-primary" [disabled]="form.invalid"> Save</button>
+</div>
+
+
+</form>
+
+
+</div>
+</div>
+</div>
